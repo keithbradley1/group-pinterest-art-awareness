@@ -5,4 +5,4 @@ angular.module("app")
         templateUrl: "app/landing/landing.html"
       })
       .otherwise("/");
-  })
+  });
