@@ -1,5 +1,5 @@
 angular.module("app")
-  .factory("firebaseFactory", firebase => {
+  .factory("firebaseFactory", () => {
     const db = firebase.database();
     const pinsRef = db.ref("pins");
     const boardsRef = db.ref("boards");
