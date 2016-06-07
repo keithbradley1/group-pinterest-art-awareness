@@ -15,6 +15,16 @@ angular.module("app")
           }
           return pins;
         }
+      }),
+      getBoard: id => db.ref(`boards/${id}`).once("value").then(snapshot => snapshot.val()),
+      getUserBoards: userid => boardsRef.once("value").then(snapshot => {
+        const boards = snapshot.val();
+        for(const bid in boards) {
+          if(boards[bid].userid !== userid) {
+            delete boards[bid];
+          }
+          return boards;
+        }
       })
     };
   });
