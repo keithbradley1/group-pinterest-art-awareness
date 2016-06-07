@@ -1,8 +1,9 @@
 angular.module("app")
-  .controller("pinsCtrl", function(firebaseFactory, $timeout) {
+  .controller("pinsCtrl", function(pinFactory, $timeout) {
     const pins = this;
 
-    firebaseFactory.getBoardPins("-K66hzzzyyyy").then(data => {
+    pinFactory.setBoardId("-K66hzzzyyyy");
+    pinFactory.getPins().then(data => {
       pins.list = data;
       $timeout();
     });
