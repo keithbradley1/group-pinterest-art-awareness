@@ -1,4 +1,6 @@
-<div ng-repeat="board in boards.list">
+<h1>Someone's boards</h1>
+
+<div ng-repeat="(key, board) in boards.list" ng-click="boards.goToBoard(key)">
   <h3>{{board.title}}</h3>
 </div>
 
