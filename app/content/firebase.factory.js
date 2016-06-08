@@ -25,7 +25,7 @@ angular.module("app")
       getUserBoards: userid => boardsRef.once("value").then(snapshot => {
         const boards = snapshot.val();
         for(const bid in boards) {
-          if(boards[bid].userid !== userid) {
+          if(boards[bid].uid !== userid) {
             delete boards[bid];
           }
         }
