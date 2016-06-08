@@ -34,6 +34,7 @@ angular.module("app")
       postBoard: board => $timeout().then(() => {
         const newKeyId = boardsRef.push().key;
         boardsRef.update({[newKeyId]:board});
-      })
+      }),
+      deleteUserBoards: id => boardsRef.child(id).remove()
     };
   });

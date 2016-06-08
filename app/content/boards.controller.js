@@ -7,7 +7,19 @@ angular.module("app")
       $location.path("/pins");
     };
 
-    boardsFactory.setUserId("-K84hddnjx9v");
+    boards.deleteBoard = (boardId) => {
+      boardsFactory.removeBoard(boardId)
+        .then(boardsFactory.getBoards().then(data => {
+          boards.list = data;
+          $timeout();
+        }));
+    };
+
+    boards.editBoard = () => {
+
+    };
+
+    boardsFactory.setUserId("Iqfc3hT88iXDOh2l0lpNzkpg5zH2");
     boardsFactory.getBoards().then(data => {
       boards.list = data;
       $timeout();
