@@ -13,8 +13,9 @@ angular.module("app")
           if(pins[pid].boardid !== boardid) {
             delete pins[pid];
           }
-          return pins;
         }
+
+        return pins;
       }),
       postPin: pin => $timeout().then(() => {
         const newKeyId = pinsRef.push().key;
@@ -27,8 +28,12 @@ angular.module("app")
           if(boards[bid].userid !== userid) {
             delete boards[bid];
           }
-          return boards;
         }
+        return boards;
+      }),
+      postBoard: board => $timeout().then(() => {
+        const newKeyId = boardsRef.push().key;
+        boardsRef.update({[newKeyId]:board});
       })
     };
   });
