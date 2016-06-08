@@ -1,5 +1,5 @@
 angular.module("app")
-  .controller("registerCtrl", function(authFactory, boardsFactory, $location) {
+  .controller("registerCtrl", function(authFactory, boardsFactory, $location, $timeout) {
     const auth = this;
     auth.actionLabel = "Register";
 
@@ -8,5 +8,6 @@ angular.module("app")
         .then(user => {
           boardsFactory.setUserId(user.uid);
           $location.path("/boards");
+          $timeout();
         }).catch(alert);
   });
