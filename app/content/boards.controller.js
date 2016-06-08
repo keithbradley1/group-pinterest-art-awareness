@@ -1,8 +1,9 @@
 angular.module("app")
-  .controller("boardsCtrl", function(firebaseFactory, $timeout) {
+  .controller("boardsCtrl", function(boardsFactory, $timeout) {
     const boards = this;
 
-    firebaseFactory.getUserBoards("-K84hddnjx9v").then(data => {
+    boardsFactory.setUserId("-K84hddnjx9v");
+    boardsFactory.getBoards().then(data => {
       boards.list = data;
       $timeout();
     });
