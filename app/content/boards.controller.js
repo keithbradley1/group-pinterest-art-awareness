@@ -7,7 +7,6 @@ angular.module("app")
       $location.path("/pins");
     };
 
-    boardsFactory.setUserId("-K84hddnjx9v");
     boardsFactory.getBoards().then(data => {
       boards.list = data;
       $timeout();
