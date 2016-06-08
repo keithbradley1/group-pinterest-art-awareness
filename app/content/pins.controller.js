@@ -6,4 +6,11 @@ angular.module("app")
       pins.list = data;
       $timeout();
     });
+    pins.submit = () =>
+      pinFactory.createPin(pins.newPin)
+        .then(pinFactory.getPins().then(data => {
+          pins.list = data;
+          pins.newPin = null;
+          $timeout();
+        }));
   });
