@@ -7,7 +7,11 @@ angular.module("app")
       pins.list = data;
       $timeout();
     });
-    pinFactory.submit = () => {
-      pinFactory.create(pins.newPin);
-    };
+    pins.submit = () =>
+      pinFactory.createPin(pins.newPin)
+        .then(pinFactory.getPins().then(data => {
+          pins.list = data;
+          pins.newPin = null;
+          $timeout();
+        }));
   });
