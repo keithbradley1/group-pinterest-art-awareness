@@ -11,6 +11,7 @@ angular.module("app")
       createPin: (newPin) =>
         firebaseFactory.postPin(Object.assign(newPin, {boardid:currentBoardId})),
 
-      deletePin: id => firebaseFactory.deletePin(id)
+      deletePin: id => firebaseFactory.deletePin(id),
+      updatePin: (id, data) => db.ref(`pins/${id}`).update(data)
     };
   });

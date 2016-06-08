@@ -10,7 +10,8 @@
         <div class="col-md-1"></div>
         <a href="#/" class="btn btn-danger col-md-2">Cancel</a>
         <div class="col-md-1"></div>
-        <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+        <button type="submit" class="btn btn-primary col-md-2" ng-hide="pins.editing">Submit</button>
+        <button class="btn btn-success col-md-2" ng-show="pins.editing">Update</button>
       </div>
     </div>
   </div>
@@ -21,6 +22,7 @@
       <h3>{{pin.title}}</h3>
       <p><a href="{{pin.url}}">{{pin.url}}</a></p>
       <button class="btn btn-danger" ng-click="pins.delete(key)">Delete</button>
+      <button class="btn btn-success" ng-click="pins.edit(key, pin)">Edit</button>
     </div>
   </div>
 </div>
