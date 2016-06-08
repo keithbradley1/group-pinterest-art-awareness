@@ -7,6 +7,18 @@ angular.module("app")
       $location.path("/pins");
     };
 
+    boards.deleteBoard = (boardId) => {
+      boardsFactory.removeBoard(boardId)
+        .then(boardsFactory.getBoards().then(data => {
+          boards.list = data;
+          $timeout();
+        }));
+    };
+
+    boards.editBoard = () => {
+
+    };
+
     boardsFactory.getBoards().then(data => {
       boards.list = data;
       $timeout();
