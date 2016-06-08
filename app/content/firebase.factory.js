@@ -1,5 +1,5 @@
 angular.module("app")
-  .factory("firebaseFactory", () => {
+  .factory("firebaseFactory", ($timeout) => {
     const db = firebase.database();
     const pinsRef = db.ref("pins");
     const boardsRef = db.ref("boards");
@@ -13,8 +13,13 @@ angular.module("app")
           if(pins[pid].boardid !== boardid) {
             delete pins[pid];
           }
-          return pins;
         }
+
+        return pins;
+      }),
+      postPin: pin => $timeout().then(() => {
+        const newKeyId = pinsRef.push().key;
+        pinsRef.update({[newKeyId]:pin});
       }),
       getBoard: id => db.ref(`boards/${id}`).once("value").then(snapshot => snapshot.val()),
       getUserBoards: userid => boardsRef.once("value").then(snapshot => {
@@ -23,8 +28,12 @@ angular.module("app")
           if(boards[bid].userid !== userid) {
             delete boards[bid];
           }
-          return boards;
         }
+        return boards;
+      }),
+      postBoard: board => $timeout().then(() => {
+        const newKeyId = boardsRef.push().key;
+        boardsRef.update({[newKeyId]:board});
       })
     };
   });
