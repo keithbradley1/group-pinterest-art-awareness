@@ -5,11 +5,12 @@ angular.module("app")
     return {
       setBoardId: boardId => currentBoardId = boardId,
       getPins: () => {
-        console.log(currentBoardId)
-        return firebaseFactory.getBoardPins(currentBoardId)
+        return firebaseFactory.getBoardPins(currentBoardId);
       },
 
       createPin: (newPin) =>
-        firebaseFactory.postPin(Object.assign(newPin, {boardid:currentBoardId}))
+        firebaseFactory.postPin(Object.assign(newPin, {boardid:currentBoardId})),
+
+      deletePin: id => firebaseFactory.deletePin(id)
     };
   });

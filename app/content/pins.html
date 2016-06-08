@@ -17,9 +17,10 @@
 </form>
 <div class="container">
   <div class="row">
-    <div class="md-col-4" ng-repeat="pin in pins.list">
+    <div class="md-col-4" ng-repeat="(key, pin) in pins.list">
       <h3>{{pin.title}}</h3>
-      <p>{{pin.url}}</p>
+      <p><a href="{{pin.url}}">{{pin.url}}</a></p>
+      <button class="btn btn-danger" ng-click="pins.delete(key)">Delete</button>
     </div>
   </div>
 </div>
