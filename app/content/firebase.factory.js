@@ -21,6 +21,7 @@ angular.module("app")
         const newKeyId = pinsRef.push().key;
         pinsRef.update({[newKeyId]:pin});
       }),
+      deletePin: id => pinsRef.child(id).remove(),
       getBoard: id => db.ref(`boards/${id}`).once("value").then(snapshot => snapshot.val()),
       getUserBoards: userid => boardsRef.once("value").then(snapshot => {
         const boards = snapshot.val();
