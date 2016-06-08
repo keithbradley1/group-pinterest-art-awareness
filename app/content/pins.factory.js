@@ -4,6 +4,11 @@ angular.module("app")
 
     return {
       setBoardId: boardId => currentBoardId = boardId,
-      getPins: () => firebaseFactory.getBoardPins(currentBoardId)
+      getPins: () => firebaseFactory.getBoardPins(currentBoardId),
+
+      createPin: (newPin) => {
+        Object.assign(newPin, {boardid:currentBoardId});
+        firebaseFactory.postPin(newPin);
+      }
     };
   });

@@ -7,4 +7,7 @@ angular.module("app")
       pins.list = data;
       $timeout();
     });
+    pinFactory.submit = () => {
+      pinFactory.create(pins.newPin);
+    };
   });

@@ -1,3 +1,17 @@
+<form name="form" ng-submit="pinFactory.submit()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="form-group">
+        <!-- <label for="title">Title</label> -->
+        <input class="col-md-3" id="title" type="text" placeholder="Title" required ng-model="pins.newPin.title">
+        <!-- <label for="URL">URL</label> -->
+        <input class="col-md-3" id="url" type="url" placeholder="Link" required ng-model="pins.newPin.url">
+        <a href="#/" class="btn btn-danger col-md-2">Cancel</a>
+        <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
 <div ng-repeat="pin in pins.list">
   <h3>{{pin.title}}</h3>
   <p>{{pin.url}}</p>
