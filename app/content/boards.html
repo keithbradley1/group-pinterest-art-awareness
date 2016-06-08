@@ -1,3 +1,20 @@
+<form name="form" ng-submit="pins.submit()">
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+        <!-- <label for="title">Title</label> -->
+        <input class="col-md-2" id="title" type="text" placeholder="Title" required ng-model="pins.newPin.title">
+        <!-- <label for="URL">URL</label> -->
+        <div class="col-md-1"></div>
+        <input class="col-md-3" id="url" type="url" placeholder="Link" required ng-model="pins.newPin.url">
+        <div class="col-md-1"></div>
+        <a href="#/" class="btn btn-danger col-md-2">Cancel</a>
+        <div class="col-md-1"></div>
+        <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
 <h1>Someone's boards</h1>
 
 <div ng-repeat="(key, board) in boards.list" ng-click="boards.goToBoard(key)">
