@@ -20,6 +20,7 @@ angular.module("app")
     };
 
     boardsFactory.setUserId("Iqfc3hT88iXDOh2l0lpNzkpg5zH2");
+
     boardsFactory.getBoards().then(data => {
       boards.list = data;
       $timeout();

@@ -3,10 +3,10 @@ angular.module("app")
     let currentUserId = "";
 
     return {
-      setUserId: userId => currentUserId = userId,
+      setUserId: uid => currentUserId = uid,
       getBoards: () => firebaseFactory.getUserBoards(currentUserId),
       removeBoard: boardId => firebaseFactory.deleteUserBoards(boardId),
       createBoard: newBoard =>
-        firebaseFactory.postBoard(Object.assign(newBoard, {userid:currentUserId}))
+        firebaseFactory.postBoard(Object.assign(newBoard, {uid:currentUserId}))
     };
   });
