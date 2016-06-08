@@ -12,6 +12,7 @@ angular.module("app")
       boards.list = data;
       $timeout();
     });
+
     boards.submit = () =>
       boardsFactory.createBoard(boards.newBoard)
         .then(boardsFactory.getBoards().then(data => {
