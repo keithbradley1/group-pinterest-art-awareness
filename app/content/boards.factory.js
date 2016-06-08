@@ -7,6 +7,6 @@ angular.module("app")
       getBoards: () => firebaseFactory.getUserBoards(currentUserId),
 
       createBoard: (newBoard) =>
-        firebaseFactory.postBoard(Object.assign(newBoard, {userId:currentUserId}))
+        firebaseFactory.postBoard(Object.assign(newBoard, {userid:currentUserId}))
     };
   });
