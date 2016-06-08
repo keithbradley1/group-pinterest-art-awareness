@@ -29,6 +29,10 @@ angular.module("app")
           }
           return boards;
         }
+      }),
+      postBoard: board => $timeout().then(() => {
+        const newKeyId = boardsRef.push().key;
+        boardsRef.update({[newKeyId]:board});
       })
     };
   });
