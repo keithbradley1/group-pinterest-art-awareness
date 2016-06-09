@@ -22,7 +22,8 @@
   <div class="row">
     <div class="md-col-4" ng-repeat="(key, pin) in pins.list">
       <h3>{{pin.title}}</h3>
-      <p><a href="{{pin.url}}">{{pin.url}}</a></p>
+      <!-- <p><a href="{{pin.url}}">{{pin.url}}</a></p> -->
+      <p><img src="{{pin.url}}"></p>
       <button class="btn btn-danger" ng-click="pins.delete(key)">Delete</button>
       <button class="btn btn-success" ng-click="pins.edit(key, pin)">Edit</button>
     </div>
