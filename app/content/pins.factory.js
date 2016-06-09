@@ -5,7 +5,14 @@ angular.module("app")
     return {
       setBoardId: boardId => currentBoardId = boardId,
       getPins: () => firebaseFactory.getBoardPins(currentBoardId),
-
+      listenPins: listener => firebaseFactory.listenPins(pins => {
+        for(const pid in pins) {
+          if(pins[pid].boardid !== currentBoardId) {
+            delete pins[pid];
+          }
+        }
+        listener(pins);
+      }),
       createPin: (newPin) =>
         firebaseFactory.postPin(Object.assign(newPin, {uid:authFactory.user(), boardid:currentBoardId})),
 

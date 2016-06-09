@@ -5,27 +5,14 @@ angular.module("app")
     pins.editing = false;
     let editKey = null;
 
-    pinFactory.getPins().then(data => {
+    pinFactory.listenPins(data => {
       pins.list = data;
       $timeout();
     });
 
-    pins.submit = () =>
-      pinFactory.createPin(pins.newPin)
-        .then(pinFactory.getPins().then(data => {
-          pins.list = data;
-          pins.newPin = null;
-          $timeout();
-        }));
-
-    pins.delete = (key) =>
-      pinFactory.deletePin(key)
-        .then(pinFactory.getPins().then(data => {
-          pins.list = data;
-          pins.newPin = null;
-          $timeout();
-        }));
-
+    pins.submit = () => pinFactory.createPin(pins.newPin).then(() => pins.newPin = null);
+    pins.delete = (key) => pinFactory.deletePin(key).then(() => pins.newPin = null);
+    pins.update = () => pinFactory.updatePin(editKey, pins.newPin);
     pins.edit = (key, pin) => {
       pins.editing = true;
       editKey = key;
@@ -33,7 +20,5 @@ angular.module("app")
       pinFactory.deletePin(key);
     };
 
-    pins.update = () =>
-      pinFactory.updatePin(editKey, pins.newPin);
 
   });

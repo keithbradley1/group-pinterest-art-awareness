@@ -7,6 +7,7 @@ angular.module("app")
 
     return {
       getPin: id => db.ref(`pins/${id}`).once("value").then(snapshot => snapshot.val()),
+      listenPins: listener => pinsRef.on("value", snapshot => listener(snapshot.val())),
       getBoardPins: boardid => pinsRef.once("value").then(snapshot => {
         const pins = snapshot.val();
         for(const pid in pins) {
@@ -23,6 +24,7 @@ angular.module("app")
       }),
       deletePin: id => pinsRef.child(id).remove(),
       getBoard: id => db.ref(`boards/${id}`).once("value").then(snapshot => snapshot.val()),
+      listenBoards: listener => boardsRef.on("value", snapshot => listener(snapshot.val())),
       getUserBoards: userid => boardsRef.once("value").then(snapshot => {
         const boards = snapshot.val();
         for(const bid in boards) {

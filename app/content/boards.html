@@ -19,7 +19,7 @@
 
 <div ng-repeat="(key, board) in boards.list" ng-click="boards.goToBoard(key)">
   <h3>{{board.title}}</h3>
-  <button class="btn btn-warning col-md-d" ng-click="boards.editBoard(key); $event.stopPropagation()">Edit</button>
+  <!-- <button class="btn btn-warning col-md-d" ng-click="boards.editBoard(key); $event.stopPropagation()">Edit</button> -->
   <button class="btn btn-danger col-md-d" ng-click="boards.deleteBoard(key); $event.stopPropagation()">Delete</button>
 </div>
 

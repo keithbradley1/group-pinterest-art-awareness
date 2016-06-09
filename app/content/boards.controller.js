@@ -7,28 +7,15 @@ angular.module("app")
       $location.path("/pins");
     };
 
-    boards.deleteBoard = (boardId) => {
-      boardsFactory.removeBoard(boardId)
-        .then(boardsFactory.getBoards().then(data => {
-          boards.list = data;
-          $timeout();
-        }));
-    };
-
+    boards.submit = () => boardsFactory.createBoard(boards.newBoard).then(() => boards.newBoard = null);
+    boards.deleteBoard = (boardId) => boardsFactory.removeBoard(boardId);
     boards.editBoard = () => {
 
     };
 
-    boardsFactory.getBoards().then(data => {
+    boardsFactory.listenBoards(data => {
       boards.list = data;
       $timeout();
     });
 
-    boards.submit = () =>
-      boardsFactory.createBoard(boards.newBoard)
-        .then(boardsFactory.getBoards().then(data => {
-          boards.list = data;
-          boards.newBoard = null;
-          $timeout();
-        }));
   });
