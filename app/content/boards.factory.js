@@ -4,7 +4,6 @@ angular.module("app")
 
     return {
       setUserId: uid => currentUserId = uid,
-      getBoards: () => firebaseFactory.getUserBoards(currentUserId),
       listenBoards: listener => firebaseFactory.listenBoards(boards => {
         for(const bid in boards) {
           if(boards[bid].uid !== currentUserId) {

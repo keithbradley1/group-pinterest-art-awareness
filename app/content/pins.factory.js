@@ -4,7 +4,6 @@ angular.module("app")
 
     return {
       setBoardId: boardId => currentBoardId = boardId,
-      getPins: () => firebaseFactory.getBoardPins(currentBoardId),
       listenPins: listener => firebaseFactory.listenPins(pins => {
         for(const pid in pins) {
           if(pins[pid].boardid !== currentBoardId) {
